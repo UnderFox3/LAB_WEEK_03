@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentContainerView
+import androidx.fragment.app.ListFragment
 
 interface CoffeeListener {
     fun onSelected(id: Int)
@@ -21,14 +22,6 @@ class MainActivity : AppCompatActivity(), CoffeeListener {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
-
-        if(savedInstanceState == null) {
-            findViewById<FragmentContainerView>(R.id.fragment_container).let {
-                containerLayout ->
-                    val listFragment = ListFragment()
-                    supportFragmentManager.beginTransaction().add(containerLayout.id, listFragment).commit()
-            }
         }
     }
 
